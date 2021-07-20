@@ -11,5 +11,6 @@ type AppConfig struct {
 	UseCache      bool
 	TemplateCache map[string]*template.Template
 	InProduction  bool
+	NumberOfPoems int
 	Session       *scs.SessionManager
 }

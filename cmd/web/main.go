@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"time"
@@ -20,6 +21,12 @@ var session *scs.SessionManager
 func main() {
 
 	app.InProduction = false
+
+	files, err := ioutil.ReadDir("../../static/poems")
+	if err != nil {
+		panic(err)
+	}
+	app.NumberOfPoems = len(files)
 
 	session = scs.New()
 	session.Lifetime = 24 * time.Hour

@@ -19,7 +19,8 @@ func routes(app *config.AppConfig) http.Handler {
 
 	//Set the Endpoints
 	mux.Get("/", handlers.Repo.Home)
-	mux.Get("/about", handlers.Repo.About)
+	mux.Get("/test", handlers.Repo.Test)
+	mux.Get("/poems", handlers.Repo.Poems)
 
 	return mux
 }
