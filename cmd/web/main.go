@@ -27,6 +27,7 @@ func main() {
 		panic(err)
 	}
 	app.NumberOfPoems = len(files)
+	fmt.Println(app.NumberOfPoems)
 
 	session = scs.New()
 	session.Lifetime = 24 * time.Hour
