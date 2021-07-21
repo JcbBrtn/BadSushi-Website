@@ -27,7 +27,7 @@ func main() {
 		panic(err)
 	}
 	app.NumberOfPoems = len(files)
-	fmt.Println(app.NumberOfPoems)
+	fmt.Println("Number of poems loaded: ", app.NumberOfPoems)
 
 	session = scs.New()
 	session.Lifetime = 24 * time.Hour

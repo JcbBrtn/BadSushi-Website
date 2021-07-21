@@ -47,51 +47,50 @@ func addBreaks(oldpoem string) string {
 	return strings.Join(poem, "")
 }
 
-/*
-
-<div class="row"> // i%5
-	<div class="col"> //everytime
-		<div class="card" style="width: 18rem;">
-			<div class="card-header">
-				Poem 1
-			</div>
-			<div class="card-body mb-4">
-				<p class="card-text">
-					{{index .StringMap "1"}}
-				</p>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-*/
-
 func (m *Repository) Poems(w http.ResponseWriter, r *http.Request) {
+
 	remoteIP := r.RemoteAddr
 	m.App.Session.Put(r.Context(), "remote_ip", remoteIP)
 	stringMap := make(map[string]string)
 	stringMap["poem"] = ""
-	rowCount := 0
+
 	for i := 0; i < m.App.NumberOfPoems; i++ {
 		poem := ""
 		numStr := strconv.Itoa(i) // This allows 1 -> "1" not 1 -> smiley Face
-		if i%5 == 0 {
-			poem += "<div class=\"row\">\n"
-			rowCount++
-		}
-		poem += "<div class=\"col\">\n<div class=\"card\" style=\"width: 18rem;\">\n<div class=\"card-header\">"
-		poem += "Poem " + numStr
-		poem += "</div>\n<div class=\"card-body mb-4\">\n<p class=\"card-text\">\n"
 		filePath := "../../static/poems/" + numStr + ".txt"
 		dat, err := ioutil.ReadFile(filePath)
 		if err != nil {
 			fmt.Println(err)
 		}
+
+		/*
+			<div class="row"> // i%5
+				<div class="col"> //everytime
+					<div class="card" style="width: 18rem;">
+						<div class="card-header">
+							Poem 1
+						</div>
+						<div class="card-body mb-4">
+							<p class="card-text">
+								{{The Poems}}
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		*/
+
+		if i%5 == 0 {
+			poem += "<div class=\"row\">\n"
+		}
+		poem += "<div class=\"col\">\n<div class=\"card\" style=\"width: 18rem;\">\n<div class=\"card-header\">"
+		poem += "Poem " + numStr
+		poem += "</div>\n<div class=\"card-body text-secondary mb-4\">\n<p class=\"card-text\">\n"
+
 		poem += addBreaks(string(dat))
 
 		poem += "</p></div></div></div>"
-		if i%5-1 == 0 || i+1 == m.App.NumberOfPoems {
+		if i%5+1 == 0 || i+1 == m.App.NumberOfPoems {
 			poem += "</div>"
 		}
 		stringMap["poem"] += poem
