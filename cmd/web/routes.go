@@ -21,6 +21,7 @@ func routes(app *config.AppConfig) http.Handler {
 	mux.Get("/", handlers.Repo.Home)
 	mux.Get("/test", handlers.Repo.Test)
 	mux.Get("/poems", handlers.Repo.Poems)
+	mux.Get("/blog", handlers.Repo.Log)
 
 	return mux
 }

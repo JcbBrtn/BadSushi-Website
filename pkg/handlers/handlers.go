@@ -39,6 +39,28 @@ func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "home.page.html", &models.TemplateData{})
 }
 
+func (m *Repository) Log(w http.ResponseWriter, r *http.Request) {
+	remoteIP := r.RemoteAddr
+	m.App.Session.Put(r.Context(), "remote_ip", remoteIP)
+	stringMap := make(map[string]string)
+	stringMap["poem"] = ""
+
+	for i := 0; i < m.App.NumberOfBlogs; i++ {
+		numStr := strconv.Itoa(i) // This allows 1 -> "1" not 1 -> smiley Face
+		filePath := "../../static/blogs/" + numStr + ".html"
+		dat, err := ioutil.ReadFile(filePath)
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		stringMap["blogs"] += string(dat)
+	}
+
+	render.RenderTemplate(w, "blog.page.html", &models.TemplateData{
+		StringMap: stringMap,
+	})
+}
+
 func addBreaks(oldpoem string) string {
 	poem := []string{}
 	for _, line := range strings.Split(oldpoem, "\n") {

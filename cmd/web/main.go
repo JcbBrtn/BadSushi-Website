@@ -29,6 +29,13 @@ func main() {
 	app.NumberOfPoems = len(files)
 	fmt.Println("Number of poems loaded: ", app.NumberOfPoems)
 
+	files, err = ioutil.ReadDir("../../static/blogs")
+	if err != nil {
+		panic(err)
+	}
+	app.NumberOfBlogs = len(files)
+	fmt.Println("Number of blogs loaded: ", app.NumberOfBlogs)
+
 	session = scs.New()
 	session.Lifetime = 24 * time.Hour
 	session.Cookie.Persist = true
