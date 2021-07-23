@@ -23,5 +23,7 @@ func routes(app *config.AppConfig) http.Handler {
 	mux.Get("/poems", handlers.Repo.Poems)
 	mux.Get("/blog", handlers.Repo.Log)
 
+	//Find way to create a seperate page for each blog.
+
 	return mux
 }
