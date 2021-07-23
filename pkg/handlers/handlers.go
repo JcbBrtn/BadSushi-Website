@@ -39,11 +39,28 @@ func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "home.page.html", &models.TemplateData{})
 }
 
+// IndPost is a page for each induvidual blog post
+func (m *Repository) IndPost(w http.ResponseWriter, r *http.Request) {
+
+	stringMap := make(map[string]string)
+	path := strings.Split(r.URL.Path, "/")
+	filePath := "../../static/blogs/" + path[2] + ".html"
+	dat, err := ioutil.ReadFile(filePath)
+	if err != nil {
+		fmt.Println(err)
+	}
+	stringMap["post"] = string(dat)
+	render.RenderTemplate(w, "post.page.html", &models.TemplateData{
+		StringMap: stringMap,
+	})
+}
+
+// Log is the lading page for the main blog of BadSushi
 func (m *Repository) Log(w http.ResponseWriter, r *http.Request) {
 	remoteIP := r.RemoteAddr
 	m.App.Session.Put(r.Context(), "remote_ip", remoteIP)
 	stringMap := make(map[string]string)
-	stringMap["poem"] = ""
+	stringMap["blogs"] = ""
 
 	for i := 0; i < m.App.NumberOfBlogs; i++ {
 		numStr := strconv.Itoa(i) // This allows 1 -> "1" not 1 -> smiley Face
@@ -54,6 +71,7 @@ func (m *Repository) Log(w http.ResponseWriter, r *http.Request) {
 		}
 
 		stringMap["blogs"] += string(dat)
+		stringMap["blogs"] += "<hr/>"
 	}
 
 	render.RenderTemplate(w, "blog.page.html", &models.TemplateData{

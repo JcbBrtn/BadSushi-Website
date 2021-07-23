@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
@@ -24,6 +25,9 @@ func routes(app *config.AppConfig) http.Handler {
 	mux.Get("/blog", handlers.Repo.Log)
 
 	//Find way to create a seperate page for each blog.
-
+	for i := 0; i < app.NumberOfBlogs; i++ {
+		numStr := strconv.Itoa(i) // This allows 1 -> "1" not 1 -> smiley Face
+		mux.Get("/blog/"+numStr, handlers.Repo.IndPost)
+	}
 	return mux
 }
