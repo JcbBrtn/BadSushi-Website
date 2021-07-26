@@ -120,7 +120,7 @@ func (m *Repository) Poems(w http.ResponseWriter, r *http.Request) {
 			</div>
 		*/
 
-		if i%5 == 0 {
+		if i%4 == 0 {
 			poem += "<div class=\"row\">\n"
 		}
 		poem += "<div class=\"col\">\n<div class=\"card\" style=\"width: 18rem;\">\n<div class=\"card-header\">"
@@ -130,7 +130,7 @@ func (m *Repository) Poems(w http.ResponseWriter, r *http.Request) {
 		poem += addBreaks(string(dat))
 
 		poem += "</p></div></div></div>"
-		if i%5+1 == 0 || i+1 == m.App.NumberOfPoems {
+		if i%4+1 == 0 || i+1 >= m.App.NumberOfPoems {
 			poem += "</div>"
 		}
 		stringMap["poem"] += poem
