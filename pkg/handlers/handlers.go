@@ -104,7 +104,7 @@ func (m *Repository) Poems(w http.ResponseWriter, r *http.Request) {
 		}
 
 		/*
-			<div class="row"> // i%5
+			<div class="row"> // i%4
 				<div class="col"> //everytime
 					<div class="card" style="width: 18rem;">
 						<div class="card-header">
