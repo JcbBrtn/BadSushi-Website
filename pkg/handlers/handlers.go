@@ -2,6 +2,9 @@ package handlers
 
 import (
 	"fmt"
+	"image"
+	"image/color"
+	"image/jpeg"
 	"io/ioutil"
 	"net/http"
 	"strconv"
@@ -144,13 +147,19 @@ func (m *Repository) Poems(w http.ResponseWriter, r *http.Request) {
 // About is the about page handler
 func (m *Repository) Test(w http.ResponseWriter, r *http.Request) {
 
-	stringMap := make(map[string]string)
-	stringMap["test"] = "You've been Chazzzed"
+	imageWidth := 700
+	imageHeight := 700
+	img := image.NewRGBA(image.Rect(0, 0, imageWidth, imageHeight))
+	for x := 0; x < imageWidth; x++ {
+		for y := 0; y < imageHeight; y++ {
+			go setPixleColor(float64(x), float64(y), img)
+		}
+	}
+	jpeg.Encode(w, img, &jpeg.Options{})
 
-	remoteIP := m.App.Session.GetString(r.Context(), "remote_ip")
-	stringMap["remote_ip"] = remoteIP
+}
 
-	render.RenderTemplate(w, "test.page.html", &models.TemplateData{
-		StringMap: stringMap,
-	})
+func setPixleColor(x float64, y float64, img *image.RGBA) {
+	color := color.RGBA{R: 0, G: 0, B: 255, A: 255}
+	img.SetRGBA(int(x), int(y), color)
 }
