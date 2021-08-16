@@ -146,8 +146,12 @@ func (m *Repository) Poems(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-// About is the about page handler
 func (m *Repository) Test(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "test.page.html", &models.TemplateData{})
+}
+
+// About is the about page handler
+func (m *Repository) Fractal_Render(w http.ResponseWriter, r *http.Request) {
 
 	imageWidth := 500
 	imageHeight := 500

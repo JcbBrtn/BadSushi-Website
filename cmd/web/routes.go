@@ -23,6 +23,7 @@ func routes(app *config.AppConfig) http.Handler {
 	mux.Get("/test", handlers.Repo.Test)
 	mux.Get("/poems", handlers.Repo.Poems)
 	mux.Get("/blog", handlers.Repo.Log)
+	mux.Get("/fractal_render", handlers.Repo.Fractal_Render)
 
 	//Find way to create a seperate page for each blog.
 	for i := 0; i < app.NumberOfBlogs; i++ {
