@@ -6,9 +6,11 @@ import (
 	"image/color"
 	"image/jpeg"
 	"io/ioutil"
+	"math"
 	"net/http"
 	"strconv"
 	"strings"
+	"sync"
 
 	"github.com/jcbbrtn/BadSushi/pkg/config"
 	"github.com/jcbbrtn/BadSushi/pkg/models"
@@ -147,19 +149,39 @@ func (m *Repository) Poems(w http.ResponseWriter, r *http.Request) {
 // About is the about page handler
 func (m *Repository) Test(w http.ResponseWriter, r *http.Request) {
 
-	imageWidth := 700
-	imageHeight := 700
+	imageWidth := 500
+	imageHeight := 500
+	var wg sync.WaitGroup
 	img := image.NewRGBA(image.Rect(0, 0, imageWidth, imageHeight))
 	for x := 0; x < imageWidth; x++ {
 		for y := 0; y < imageHeight; y++ {
-			go setPixleColor(float64(x), float64(y), img)
+			wg.Add(1)
+			go setPixleColor(float64(x), float64(y), img, &wg)
 		}
 	}
+	wg.Wait()
 	jpeg.Encode(w, img, &jpeg.Options{})
-
 }
 
-func setPixleColor(x float64, y float64, img *image.RGBA) {
-	color := color.RGBA{R: 0, G: 0, B: 255, A: 255}
+func setPixleColor(x float64, y float64, img *image.RGBA, wg *sync.WaitGroup) {
+	defer wg.Done()
+	xRange := 3.14
+	yRange := 3.14
+	//Get the coordinate this pixle represents
+	a := (xRange/500)*x - (xRange / 2)
+	b := (yRange/500)*y - (yRange / 2)
+	aStart := a
+	bStart := b
+	count := 0
+	distance := 0.0
+	for count < 255 && distance < 2 {
+		a = a*x - b*y
+		b = x*b + a*y
+		a += aStart
+		b += bStart
+		distance = math.Sqrt(a*a + b*b)
+		count++
+	}
+	color := color.RGBA{R: uint8(count), G: uint8(count), B: uint8(count), A: 255}
 	img.SetRGBA(int(x), int(y), color)
 }
