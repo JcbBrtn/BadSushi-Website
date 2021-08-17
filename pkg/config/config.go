@@ -14,4 +14,6 @@ type AppConfig struct {
 	NumberOfPoems int
 	NumberOfBlogs int
 	Session       *scs.SessionManager
+	FractalWidth  int
+	FractalHeight int
 }
