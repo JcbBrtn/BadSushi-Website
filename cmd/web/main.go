@@ -22,7 +22,7 @@ func main() {
 
 	app.FractalHeight = 1080
 	app.FractalWidth = 1080
-
+	app.EscapeDistance = 100
 	app.InProduction = false
 
 	files, err := ioutil.ReadDir("../../static/poems")

@@ -20,7 +20,7 @@ func routes(app *config.AppConfig) http.Handler {
 
 	//Set the Endpoints
 	mux.Get("/", handlers.Repo.Home)
-	mux.Get("/test", handlers.Repo.Test)
+	mux.Get("/fractal", handlers.Repo.Fractal)
 	mux.Get("/poems", handlers.Repo.Poems)
 	mux.Get("/blog", handlers.Repo.Log)
 	mux.Get("/fractal_render", handlers.Repo.Fractal_Render)

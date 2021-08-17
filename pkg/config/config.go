@@ -8,12 +8,13 @@ import (
 
 // AppConfig holds the application configuration
 type AppConfig struct {
-	UseCache      bool
-	TemplateCache map[string]*template.Template
-	InProduction  bool
-	NumberOfPoems int
-	NumberOfBlogs int
-	Session       *scs.SessionManager
-	FractalWidth  int
-	FractalHeight int
+	UseCache       bool
+	TemplateCache  map[string]*template.Template
+	InProduction   bool
+	NumberOfPoems  int
+	NumberOfBlogs  int
+	Session        *scs.SessionManager
+	FractalWidth   int
+	FractalHeight  int
+	EscapeDistance int
 }

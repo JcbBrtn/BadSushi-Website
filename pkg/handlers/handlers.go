@@ -145,13 +145,12 @@ func (m *Repository) Poems(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-func (m *Repository) Test(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "test.page.html", &models.TemplateData{})
+func (m *Repository) Fractal(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "fractal.page.html", &models.TemplateData{})
 }
 
 // About is the about page handler
 func (m *Repository) Fractal_Render(w http.ResponseWriter, r *http.Request) {
-
 	imageWidth := m.App.FractalWidth
 	imageHeight := m.App.FractalHeight
 	var wg sync.WaitGroup
@@ -159,31 +158,32 @@ func (m *Repository) Fractal_Render(w http.ResponseWriter, r *http.Request) {
 	for x := 0; x < imageWidth; x++ {
 		for y := 0; y < imageHeight; y++ {
 			wg.Add(1)
-			go setPixleColor(float64(x), float64(y), img, &wg, imageHeight, imageWidth)
+			go setPixleColor(float64(x), float64(y), img, &wg, *m.App)
 		}
 	}
 	wg.Wait()
 	png.Encode(w, img)
 }
 
-func setPixleColor(x float64, y float64, img *image.RGBA, wg *sync.WaitGroup, height int, width int) {
+func setPixleColor(x float64, y float64, img *image.RGBA, wg *sync.WaitGroup, app config.AppConfig) {
 	defer wg.Done()
-	xRange := 3.14
-	yRange := 3.14
 	//Get the coordinate this pixle represents
-	a := (xRange/float64(height))*x - (xRange / 2)
-	b := (yRange/float64(width))*y - (yRange / 2)
-	c := complex(a, b)
+	a := (10/float64(app.FractalHeight))*x - (10 / 2)
+	b := (10/float64(app.FractalWidth))*y - (10 / 2)
+	c := complex(a, b) //first instance of n, this can be reffered to as z0
 	n := c
 	count := 0
 	distance := 0.0
-	for count < 255 && distance < 2 {
-		n = Mandlebrot(n, c)
+	for count < 255 && distance < float64(app.EscapeDistance) {
+		//n = Mandlebrot(n, c)
+		n = MyFunc(n)
 		distance = Magnitude(n)
 		count++
 	}
 	//Insert Coloring algorithm here
 
 	color := color.RGBA{R: uint8(count), G: uint8(count), B: uint8(count), A: 255}
+
+	//Set the pixle and end the thread
 	img.SetRGBA(int(x), int(y), color)
 }
