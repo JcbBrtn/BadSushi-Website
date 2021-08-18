@@ -24,6 +24,8 @@ func main() {
 	app.FractalWidth = 1080
 	app.EscapeDistance = 100
 	app.InProduction = false
+	app.RealRange = 10
+	app.CompRange = 10
 
 	files, err := ioutil.ReadDir("../../static/poems")
 	if err != nil {

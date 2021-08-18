@@ -17,4 +17,6 @@ type AppConfig struct {
 	FractalWidth   int
 	FractalHeight  int
 	EscapeDistance int
+	RealRange      int
+	CompRange      int
 }

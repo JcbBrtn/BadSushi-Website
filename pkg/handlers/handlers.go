@@ -168,8 +168,8 @@ func (m *Repository) Fractal_Render(w http.ResponseWriter, r *http.Request) {
 func setPixleColor(x float64, y float64, img *image.RGBA, wg *sync.WaitGroup, app config.AppConfig) {
 	defer wg.Done()
 	//Get the coordinate this pixle represents
-	a := (10/float64(app.FractalHeight))*x - (10 / 2)
-	b := (10/float64(app.FractalWidth))*y - (10 / 2)
+	a := (float64(app.RealRange)/float64(app.FractalHeight))*x - (float64(app.RealRange) / 2)
+	b := (float64(app.CompRange)/float64(app.FractalWidth))*y - (float64(app.CompRange) / 2)
 	c := complex(a, b) //first instance of n, this can be reffered to as z0
 	n := c
 	count := 0
