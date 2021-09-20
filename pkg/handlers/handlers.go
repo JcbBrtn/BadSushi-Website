@@ -177,6 +177,7 @@ func setPixleColor(x float64, y float64, img *image.RGBA, wg *sync.WaitGroup, ap
 	for count < 255 && distance < float64(app.EscapeDistance) {
 		//n = Mandlebrot(n, c)
 		n = MyFunc(n)
+		n = Cos_z0(n, c)
 		distance = Magnitude(n)
 		count++
 	}
