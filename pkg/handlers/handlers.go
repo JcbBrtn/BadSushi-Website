@@ -125,7 +125,7 @@ func (m *Repository) Poems(w http.ResponseWriter, r *http.Request) {
 		*/
 
 		if i%4 == 0 {
-			poem += "<div class=\"row\">\n"
+			poem += "<div class=\"row mt-5\">\n"
 		}
 		poem += "<div class=\"col\">\n<div class=\"card\" style=\"width: 18rem;\">\n<div class=\"card-header\">"
 		poem += "Poem " + numStr

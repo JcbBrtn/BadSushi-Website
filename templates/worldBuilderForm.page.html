@@ -1,0 +1,400 @@
+{{template "base" .}}
+
+{{define "content"}}
+<div class="px-4 py-5 my-5 text-center">
+  <h1 class="display-5 fw-bold">The World Builder</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">An easy to use interface that lets the ideas flow from within you. Just relax, and let your imagination run wild. There are never any wrong answers.</p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <a class="btn btn-outline-secondary btn-lg px-4" href="/blog">Blog</a>
+      <a class="btn btn-outline-secondary btn-lg px-4" href="/poems">Poems</a>
+      <a class="btn btn-outline-secondary btn-lg px-4" href="/fractal">Fractals</a>
+      <a class="btn btn-outline-secondary btn-lg px-4" href="/worldBuilder">World Builder</a>
+    </div>
+  </div>
+</div>
+
+<!--Person Form Div-->
+<form action="/worldBuilder/person" method="GET">
+  <div class="container mb-4">
+      <h4>Person</h4>
+      <div class="row">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="name" name="name" class="form-control" placeholder="Name" aria-label="Name">
+              </div>
+              <div class="col">
+                <input type="text" id="gender" name="gender" class="form-control" placeholder="Gender" aria-label="Gender">
+              </div>
+            </div>
+      </div>
+      <div class="row">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="race" name="race" class="form-control" placeholder="Race" aria-label="Race">
+              </div>
+              <div class="col">
+                <input type="text" id="class" name="class" class="form-control" placeholder="Class" aria-label="Class">
+              </div>
+            </div>
+      </div>
+      <div class="row">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="alignment" name="alignment" class="form-control" placeholder="Alignment" aria-label="Alignment">
+              </div>
+              <div class="col">
+                <input type="text" id="personality" name="personality" class="form-control" placeholder="Flaws" aria-label="Personality">
+              </div>
+            </div>
+      </div>
+      <div class="row">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="bonds" name="bonds" class="form-control" placeholder="Ideals" aria-label="Bonds">
+              </div>
+              <div class="col">
+                <input type="text" id="langKnown" name="langKnown"  class="form-control" placeholder="Languages Known" aria-label="Languages Known">
+              </div>
+            </div>
+      </div>
+      <div class="row">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="weapons" name="weapons" class="form-control" placeholder="Weapons" aria-label="Weapons">
+              </div>
+              <div class="col">
+                <input type="text" id="equipment" name="equipment" class="form-control" placeholder="Equipment" aria-label="Equipment">
+              </div>
+            </div>
+      </div>
+      <div class="row">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="mannerisms" name="mannerisms" class="form-control" placeholder="Mannerisms" aria-label="Mannerisms">
+              </div>
+              <div class="col">
+                <input type="text" id="occupation" name="occupation" class="form-control" placeholder="Occupation" aria-label="Occupation">
+              </div>
+            </div>
+      </div>
+      <div class="row mb-4">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="secrets" name="secrets" class="form-control" placeholder="Secrets" aria-label="Secrets">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Useful Knowledge" aria-label="Useful Knowledge">
+              </div>
+            </div>
+      </div>
+      <div class="row mb-4">
+          <label for="story" class="form-label">Their Story</label>
+          <textarea id="story" name="story" class="form-control" rows="3"></textarea>
+      </div>
+      <div class="row mb-6">
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+  </div>
+</form>
+
+<!--Faction Div-->
+<form action="/worldBuilder/faction" method="GET">
+  <div class="container mb-4">
+      <h4>Faction</h4>
+      <div class="row">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="name" name="name" class="form-control" placeholder="Name" aria-label="Name">
+              </div>
+              <div class="col">
+                <input type="text" id="goals" name="goals" class="form-control" placeholder="Goals" aria-label="Goals">
+              </div>
+            </div>
+      </div>
+      <div class="row">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="methods" name="methods" class="form-control" placeholder="Methods" aria-label="Methods">
+              </div>
+              <div class="col">
+                <input type="text" id="members" name="members"class="form-control" placeholder="Members" aria-label="Members">
+              </div>
+            </div>
+      </div>
+      <div class="row mb-4">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="secrets" name="secrets" class="form-control" placeholder="Secrets" aria-label="Secrets">
+              </div>
+              <div class="col">
+                <input type="text" id="useKnow" name="useKnow" class="form-control" placeholder="Useful Knowledge" aria-label="Useful Knowledge">
+              </div>
+            </div>
+      </div>
+      <div class="row">
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+  </div>
+</form>
+
+<!--Location Form Div-->
+<form action="/worldBuilder/location" method="GET">
+  <div class="container mb-4">
+      <h4>Location</h4>
+      <div class="row">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="name" name="name" class="form-control" placeholder="Name" aria-label="Name">
+              </div>
+              <div class="col">
+                <input type="text" id="location" name="location" class="form-control" placeholder="Location" aria-label="Location">
+              </div>
+            </div>
+      </div>
+      <div class="row">
+          <div class="row g-3">
+              <label for="history" class="form-label">History</label>
+              <textarea class="form-control" id="history" name="history" rows="3"></textarea>
+          </div>
+      </div>
+      <div class="row mb-4">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="size" name="size" class="form-control" placeholder="Size" aria-label="Size">
+              </div>
+              <div class="col">
+                <input type="text" id="government" name="government" class="form-control" placeholder="Government" aria-label="Government">
+              </div>
+            </div>
+      </div>
+      <div class="row mb-4">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="ruler" name="ruler" class="form-control" placeholder="Ruler" aria-label="Ruler">
+              </div>
+              <div class="col">
+                <input type="text" id="alliances" name="alliances" class="form-control" placeholder="Alliances" aria-label="Alliances">
+              </div>
+            </div>
+      </div>
+      <div class="row mb-4">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="enemies" name="enemies" class="form-control" placeholder="Enemies" aria-label="Enemies">
+              </div>
+              <div class="col">
+                <input type="text" id="currency" name="currency" class="form-control" placeholder="Currency" aria-label="Currency">
+              </div>
+            </div>
+      </div>
+      <div class="row mb-4">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="problems" name="problems" class="form-control" placeholder="Problems" aria-label="Problems">
+              </div>
+              <div class="col">
+                <input type="text" id="POI" name="POI" class="form-control" placeholder="People Of Interest" aria-label="People of Interest">
+              </div>
+            </div>
+      </div>
+      <div class="row">
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+  </div>
+</form>
+
+<!--Kingdom Div-->
+<form action="/worldBuilder/kingdom" method="GET">
+  <div class="container mb-4">
+      <h4>Kingdom</h4>
+      <div class="row">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="name" name="name" class="form-control" placeholder="Name" aria-label="Name">
+              </div>
+              <div class="col">
+                <input type="text" id="capital" name="captial" class="form-control" placeholder="Capital" aria-label="Capital">
+              </div>
+            </div>
+      </div>
+      <div class="row">
+          <div class="row g-3">
+              <div class="col">
+                  <input type="text" id="ruler" name="ruler" class="form-control" placeholder="Ruler" aria-label="Ruler">
+                </div>
+                <div class="col">
+                  <input type="text" id="government" name="government" class="form-control" placeholder="Government" aria-label="Government">
+                </div>
+            </div>
+      </div>
+      <div class="row">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="age" name="age" class="form-control" placeholder="Age" aria-label="Age">
+              </div>
+              <div class="col">
+                <input type="text" id="officialLang" name="officialLang" class="form-control" placeholder="Official Languages" aria-label="Official Languages">
+              </div>
+            </div>
+      </div>
+      <div class="row">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="secondaryLang" name="secondaryLang" class="form-control" placeholder="Secondary Languages" aria-label="Secondary Languages">
+              </div>
+              <div class="col">
+                <input type="text" id="size" name="size" class="form-control" placeholder="Size" aria-label="Size">
+              </div>
+            </div>
+      </div>
+      <div class="row">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text"id="placesOfInterest" name="placesOfInterest" class="form-control" placeholder="Places of Interest" aria-label="Places of Interest">
+              </div>
+            </div>
+      </div>
+      <div class="row mb-4">
+          <div class="row g-3">
+              <label for="history" class="form-label">History</label>
+              <textarea class="form-control" id="history" name="history" rows="3"></textarea>
+          </div>
+      </div>
+      <div class="row">
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+  </div>
+</form>
+
+<!--Continent Div-->
+<form action="/worldBuilder/continent" method="GET">
+  <div class="container mb-4">
+      <h4>Continent</h4>
+      <div class="row">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="name" name="name" class="form-control" placeholder="Name" aria-label="Name">
+              </div>
+              <div class="col">
+                <input type="text" id="kingdom" name="kingdom" class="form-control" placeholder="Kingdoms" aria-label="Kingdoms">
+              </div>
+            </div>
+      </div>
+      <div class="row mb-4">
+          <div class="row g-3">
+              <label for="history" class="form-label">History</label>
+              <textarea class="form-control" id="history" name="history" rows="3"></textarea>
+          </div>
+      </div>
+      <div class="row">
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+  </div>
+</form>
+
+<!--Items Div-->
+<form action="/worldBuilder/items" method="GET">
+  <div class="container mb-4">
+      <h4>Items</h4>
+      <div class="row">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="name" name="name" class="form-control" placeholder="Name" aria-label="Name">
+              </div>
+              <div class="col">
+                <input type="text" id="age" name="age" class="form-control" placeholder="Age" aria-label="Age">
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="abilities" name="abilities" class="form-control" placeholder="Abilities" aria-label="Abilities">
+              </div>
+              <div class="col">
+                <input type="text" id="curses" name="curses" class="form-control" placeholder="Curses" aria-label="Curses">
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="location" name="location" class="form-control" placeholder="Location" aria-label="Location">
+              </div>
+          </div>
+      </div>
+      <div class="row mb-4">
+          <div class="row g-3">
+              <label for="story" class="form-label">Story</label>
+              <textarea class="form-control" id="story" name="story" rows="3"></textarea>
+          </div>
+      </div>
+      <div class="row">
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+  </div>
+</form>
+
+<!--God Div-->
+<form action="/worldBuilder/god" method="GET">
+  <div class="container mb-4">
+      <h4>God</h4>
+      <div class="row">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="name" name="name" class="form-control" placeholder="Name" aria-label="Name">
+              </div>
+              <div class="col">
+                <input type="text" id="worshipers" name="worshipers" class="form-control" placeholder="Worshipers" aria-label="Worshipers">
+              </div>
+            </div>
+      </div>
+      <div class="row mb-4">
+          <div class="row g-3">
+              <label for="history" class="form-label">History</label>
+              <textarea class="form-control" id="history" name="history" rows="3"></textarea>
+          </div>
+      </div>
+      <div class="row">
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+  </div>
+</form>
+
+<!--World Div-->
+<form action="/worldBuilder/world" method="GET">
+  <div class="container mb-4">
+      <h4>World</h4>
+      <div class="row">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="name" name="name" class="form-control" placeholder="Name" aria-label="Name">
+              </div>
+              <div class="col">
+                <input type="text" id="continents" name="continents" class="form-control" placeholder="Continents" aria-label="Continents">
+              </div>
+            </div>
+      </div>
+      <div class="row">
+          <div class="row g-3">
+              <div class="col">
+                <input type="text" id="gods" name="gods" class="form-control" placeholder="Gods" aria-label="Gods">
+              </div>
+              <div class="col">
+                <input type="text" id="extraLaws" name="extraLaws" class="form-control" placeholder="Extra Laws" aria-label="Extra Laws">
+              </div>
+            </div>
+      </div>
+      <div class="row mb-4">
+          <div class="row g-3">
+              <label for="history" class="form-label">History</label>
+              <textarea class="form-control" id="history" name="history" rows="3"></textarea>
+          </div>
+      </div>
+      <div class="row">
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+  </div>
+</form>
+{{end}}
