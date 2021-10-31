@@ -13,6 +13,7 @@ import (
 	"github.com/jcbbrtn/BadSushi/pkg/render"
 )
 
+//Web address will be localhost:8080
 const portNumber = ":8080"
 
 var app config.AppConfig
@@ -20,6 +21,7 @@ var session *scs.SessionManager
 
 func main() {
 
+	//Set the Config for the fractal generator
 	app.FractalHeight = 1080
 	app.FractalWidth = 1080
 	app.EscapeDistance = 100
@@ -27,6 +29,7 @@ func main() {
 	app.RealRange = 10
 	app.CompRange = 10
 
+	//Read in all the files in the poems folder
 	files, err := ioutil.ReadDir("../../static/poems")
 	if err != nil {
 		panic(err)
@@ -34,6 +37,7 @@ func main() {
 	app.NumberOfPoems = len(files)
 	fmt.Println("Number of poems loaded: ", app.NumberOfPoems)
 
+	//Read in all files in the blogs folder
 	files, err = ioutil.ReadDir("../../static/blogs")
 	if err != nil {
 		panic(err)
@@ -41,6 +45,7 @@ func main() {
 	app.NumberOfBlogs = len(files)
 	fmt.Println("Number of blogs loaded: ", app.NumberOfBlogs)
 
+	//Use the middleware to create a new session
 	session = scs.New()
 	session.Lifetime = 24 * time.Hour
 	session.Cookie.Persist = true
@@ -70,6 +75,7 @@ func main() {
 		Handler: routes(&app),
 	}
 
+	//Start the server
 	err = srv.ListenAndServe()
 	if err != nil {
 		log.Fatal(err)

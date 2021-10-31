@@ -1,5 +1,7 @@
 package config
 
+//THIS SECTION OF CODE HAS NOT BEEN IMPLEMENTED YET
+
 type Person struct {
 	Name            string
 	Gender          string

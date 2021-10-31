@@ -33,7 +33,8 @@ func routes(app *config.AppConfig) http.Handler {
 	mux.Get("/worldBuilder/items", handlers.Repo.Items)
 	mux.Get("/worldBuilder/god", handlers.Repo.God)
 	mux.Get("/worldBuilder/world", handlers.Repo.World)
-	//Find way to create a seperate page for each blog.
+
+	//create a seperate page for each blog.
 	for i := 0; i < app.NumberOfBlogs; i++ {
 		numStr := strconv.Itoa(i) // This allows 1 -> "1" not 1 -> smiley Face
 		mux.Get("/blog/"+numStr, handlers.Repo.IndPost)

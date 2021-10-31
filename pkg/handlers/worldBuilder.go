@@ -8,6 +8,7 @@ import (
 	"github.com/jcbbrtn/BadSushi/pkg/render"
 )
 
+//THIS SECTION OF CODE HAS NOT BEEN IMPLEMENTED YET
 type WorldBuild struct {
 	AllPersons    []config.Person
 	AllFactions   []config.Faction
