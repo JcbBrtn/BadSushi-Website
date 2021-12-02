@@ -15,8 +15,6 @@ func routes(app *config.AppConfig) http.Handler {
 
 	//Use Middleware
 	mux.Use(middleware.Recoverer)
-	mux.Use(NoSurf)
-	mux.Use(SessionLoad)
 
 	//Set the Endpoints
 	mux.Get("/", handlers.Repo.Home)
