@@ -32,7 +32,7 @@ func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData)
 	if app.UseCache {
 		// get the template cache from the app config
 		tc = app.TemplateCache
-		fmt.Println("Got Template Cache")
+		//fmt.Println("Got Template Cache")
 	} else {
 		var err error
 		tc, err = CreateTemplateCache()
@@ -63,7 +63,13 @@ func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData)
 func CreateTemplateCache() (map[string]*template.Template, error) {
 
 	myCache := map[string]*template.Template{}
-	pages, err := filepath.Glob("../../templates/*.page.html")
+	pages, err := filepath.Glob("templates/*.page.html")
+
+	fmt.Println("About to loop through Pages")
+	for _, page := range pages {
+		fmt.Println(page)
+	}
+	fmt.Println("Done looping through Pages")
 
 	if err != nil {
 		fmt.Println("Error 0")
@@ -78,14 +84,14 @@ func CreateTemplateCache() (map[string]*template.Template, error) {
 			return myCache, err
 		}
 
-		matches, err := filepath.Glob("../../templates/*.layout.html")
+		matches, err := filepath.Glob("templates/*.layout.html")
 		if err != nil {
 			fmt.Println("Error 2")
 			return myCache, err
 		}
 
 		if len(matches) > 0 {
-			ts, err = ts.ParseGlob("../../templates/*.layout.html")
+			ts, err = ts.ParseGlob("templates/*.layout.html")
 			if err != nil {
 				fmt.Println("Error 3")
 				return myCache, err
