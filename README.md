@@ -1,5 +1,7 @@
 # BadSushi
-BadSushi is a personal website where I store my writing, and random ideas that come up. Currently there are Poems, Blogs, fractals, and a World Builder.
+BadSushi is a personal website where I store my writing, and random ideas that come up. Currently there are Poems, Blogs, and fractals.
+
+Here is the website: https://badsushi.herokuapp.com/
 
 The poems and blogs are personal writings that help me contain my creative side.
 The fractals uses Go Routines to create images of fractals. Currently the generated fractal is hardcoded which is something I plan to change in the future.
