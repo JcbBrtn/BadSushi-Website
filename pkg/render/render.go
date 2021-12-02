@@ -32,6 +32,7 @@ func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData)
 	if app.UseCache {
 		// get the template cache from the app config
 		tc = app.TemplateCache
+		fmt.Println("Got Template Cache")
 	} else {
 		var err error
 		tc, err = CreateTemplateCache()
