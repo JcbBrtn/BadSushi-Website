@@ -33,9 +33,6 @@ func NewHandlers(r *Repository) {
 
 // Home is the home page handlering
 func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
-	remoteIP := r.RemoteAddr
-	m.App.Session.Put(r.Context(), "remote_ip", remoteIP)
-
 	render.RenderTemplate(w, "home.page.html", &models.TemplateData{})
 }
 
@@ -57,8 +54,6 @@ func (m *Repository) IndPost(w http.ResponseWriter, r *http.Request) {
 
 // Log is the lading page for the main blog of BadSushi
 func (m *Repository) Log(w http.ResponseWriter, r *http.Request) {
-	remoteIP := r.RemoteAddr
-	m.App.Session.Put(r.Context(), "remote_ip", remoteIP)
 	stringMap := make(map[string]string)
 	stringMap["blogs"] = ""
 
@@ -88,9 +83,6 @@ func addBreaks(oldpoem string) string {
 }
 
 func (m *Repository) Poems(w http.ResponseWriter, r *http.Request) {
-
-	remoteIP := r.RemoteAddr
-	m.App.Session.Put(r.Context(), "remote_ip", remoteIP)
 	stringMap := make(map[string]string)
 	stringMap["poem"] = ""
 
