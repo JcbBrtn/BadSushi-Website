@@ -25,7 +25,7 @@ func main() {
 	app.FractalHeight = 1080
 	app.FractalWidth = 1080
 	app.EscapeDistance = 100
-	app.InProduction = false
+	app.InProduction = true
 	app.RealRange = 10
 	app.CompRange = 10
 
