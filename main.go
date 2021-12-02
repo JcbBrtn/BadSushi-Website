@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/alexedwards/scs/v2"
@@ -14,7 +15,7 @@ import (
 )
 
 //Web address will be localhost:8080
-//const portNumber = ":8080"
+var portNumber = ":" + os.Getenv("PORT")
 
 var app config.AppConfig
 var session *scs.SessionManager
@@ -68,10 +69,10 @@ func main() {
 
 	render.NewTemplates(&app)
 
-	//fmt.Printf("Starting application on port %s", portNumber)
+	fmt.Printf("Starting application on port %s", portNumber)
 
 	srv := &http.Server{
-		//Addr:    portNumber,
+		Addr:    portNumber,
 		Handler: routes(&app),
 	}
 
