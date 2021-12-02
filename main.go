@@ -30,7 +30,7 @@ func main() {
 	app.CompRange = 10
 
 	//Read in all the files in the poems folder
-	files, err := ioutil.ReadDir("../../static/poems")
+	files, err := ioutil.ReadDir("static/poems")
 	if err != nil {
 		panic(err)
 	}
@@ -38,7 +38,7 @@ func main() {
 	fmt.Println("Number of poems loaded: ", app.NumberOfPoems)
 
 	//Read in all files in the blogs folder
-	files, err = ioutil.ReadDir("../../static/blogs")
+	files, err = ioutil.ReadDir("static/blogs")
 	if err != nil {
 		panic(err)
 	}
