@@ -65,12 +65,6 @@ func CreateTemplateCache() (map[string]*template.Template, error) {
 	myCache := map[string]*template.Template{}
 	pages, err := filepath.Glob("templates/*.page.html")
 
-	fmt.Println("About to loop through Pages")
-	for _, page := range pages {
-		fmt.Println(page)
-	}
-	fmt.Println("Done looping through Pages")
-
 	if err != nil {
 		fmt.Println("Error 0")
 		return myCache, err
