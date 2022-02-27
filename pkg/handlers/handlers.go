@@ -132,3 +132,12 @@ func (m *Repository) Poems(w http.ResponseWriter, r *http.Request) {
 		StringMap: stringMap,
 	})
 }
+
+func (m *Repository) Catch_Phrase(w http.ResponseWriter, r *http.Request) {
+	stringMap := make(map[string]string)
+	stringMap["next_word"] = "Thing 1"
+
+	render.RenderTemplate(w, "cp.page.html", &models.TemplateData{
+		StringMap: stringMap,
+	})
+}

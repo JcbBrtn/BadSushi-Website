@@ -1,0 +1,15 @@
+{{template "base" .}}
+
+{{define "content"}}
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center" onclick="next_word">
+    <main role="main" class="inner cover">
+        <h1 class="cover-heading">{{index .StringMap "next_word"}}</h1>
+    </main>
+</div>
+<script>
+    function next_word(){
+        window.location.replace("/Catch_Phrase");
+    }
+</script>
+
+{{end}}
