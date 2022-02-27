@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"math/rand"
 	"time"
 )
@@ -13,7 +12,13 @@ func Get_Next_Word(lastWord string) string {
 		"Abraham Lincon",
 		"Nestle",
 		"Moira Rose",
-		"Bailey Grimm",
+		"Lupin",
+		"Potter",
+		"Holly",
+		"Fonzi",
+		"Roxy",
+		"Taz",
+		"Zeke",
 	)
 
 	rand.Seed(time.Now().Unix()) // initialize global pseudo random generator
@@ -22,8 +27,8 @@ func Get_Next_Word(lastWord string) string {
 	for nextWord == lastWord {
 		nextWord = things[rand.Intn(len(things))]
 	}
-	fmt.Println("lastWord : " + lastWord)
-	fmt.Println("nextWord : " + nextWord)
+	//fmt.Println("lastWord : " + lastWord)
+	//fmt.Println("nextWord : " + nextWord)
 
 	return nextWord
 }

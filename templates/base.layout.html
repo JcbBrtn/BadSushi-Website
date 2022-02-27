@@ -1,6 +1,6 @@
 {{define "base"}}
     <!doctype html>
-    <html lang="en">
+    <html lang="en" class="h-100">
         <head>
             <meta charset="UTF-8">
             <meta name="viewport"
@@ -15,7 +15,6 @@
 
             {{end}}
         </head>
-        <body>
         
             {{block "content" .}}
 
@@ -25,6 +24,5 @@
 
             {{end}}
 
-        </body>
     </html>
 {{end}}
