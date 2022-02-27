@@ -1,14 +1,15 @@
 {{template "base" .}}
 
 {{define "content"}}
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center" onclick="next_word">
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center" onclick="next_word()">
     <main role="main" class="inner cover">
-        <h1 class="cover-heading">{{index .StringMap "next_word"}}</h1>
+        <h1 id="word" class="cover-heading">{{index .StringMap "next_word"}}</h1>
     </main>
 </div>
 <script>
     function next_word(){
-        window.location.replace("/Catch_Phrase");
+        var lastWord = document.getElementById("word").innerText;
+        window.location.replace("/Catch_Phrase?lastWord=" + lastWord);
     }
 </script>
 
