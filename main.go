@@ -5,7 +5,6 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"os"
 	"time"
 
 	"github.com/alexedwards/scs/v2"
@@ -15,7 +14,8 @@ import (
 )
 
 //Web address will be localhost:8080
-var portNumber = ":" + os.Getenv("PORT")
+//var portNumber = ":" + os.Getenv("PORT")
+var portNumber = ":8080"
 
 var app config.AppConfig
 var session *scs.SessionManager
