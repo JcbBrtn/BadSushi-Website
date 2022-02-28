@@ -53,7 +53,7 @@ func main() {
 
 	//Use the middleware to create a new session
 	session = scs.New()
-	session.Lifetime = 24 * time.Hour
+	session.Lifetime = 5 * time.Minute
 	session.Cookie.Persist = true
 	session.Cookie.SameSite = http.SameSiteLaxMode
 	session.Cookie.Secure = app.InProduction
