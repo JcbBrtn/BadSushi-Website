@@ -5,7 +5,6 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"os"
 	"time"
 
 	"github.com/alexedwards/scs/v2"
@@ -15,12 +14,12 @@ import (
 )
 
 //Uncomment this for production environment
-var portNumber = ":" + os.Getenv("PORT")
+//var portNumber = ":" + os.Getenv("PORT")
 
 //Web address will be localhost:8080
 //This should only be used in Test environment
 //Make sure to comment this line when pushing to production
-//var portNumber = ":8080"
+var portNumber = ":8080"
 
 var app config.AppConfig
 var session *scs.SessionManager

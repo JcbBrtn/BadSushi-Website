@@ -2,20 +2,19 @@
 
 {{define "content"}}
 <body class="d-flex h-100 text-center">
-        
+
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column" onclick="next_word()">
     <header class="mb-auto">
         <div>
         <h3 class="float-md-start mb-0">Catch Phrase</h3>
         <nav class="nav nav-masthead justify-content-center float-md-end">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
-            <a class="nav-link" href="#">Help</a>
         </nav>
         </div>
     </header>
 
-    <main class="px-3" >
-        <h1 id="word">{{index .StringMap "next_word"}}</h1>
+    <main class="px-3">
+        <h1 id="word">Click Here to Start!</h1>
+        <h2 id="timer">Timer: 30 Seconds</h2>
     </main>
 
     <footer class="mt-auto text-white-50">
@@ -26,10 +25,100 @@
 </body>
 
 <script>
+    var w = [
+    "George Washington",
+	"Abraham Lincon",
+	"Nestle",
+	"Moira Rose",
+	"Lupin",
+	"Potter",
+	"Holly",
+	"Fonzi",
+	"Roxy",
+	"Taz",
+	"Zeke",
+	"Missy Franklin",
+	"Roger Federer",
+	"Katie Ledecky",
+	"Michael Phelps",
+	"Bjorn Borg",
+	"Philip J. Fry",
+	"Rafael Nadal",
+	"The Professor",
+	"Buzz Lightyear",
+	"Tom Hanks",
+	"Dwight Schrute",
+	"Jim Halpert",
+	"McDonalds",
+	"Burger King",
+	"Wendys",
+	"Jimmy John's",
+	"Zeus",
+	"Hades",
+	"Hercules",
+	"Bo Jackson",
+	"Joe Rogan",
+	"Tom Cruise",
+	"Coffee",
+	"Tea",
+	"Shaq",
+	"Michael Jordan",
+	"Beyonce",
+	"Slim Shady",
+	"Dr. Dre",
+	"Snoop Dogg",
+	"Subway",
+	"Jersey Mike's",
+	"Scientology",
+	"John Travolta",
+	"Amazon",
+	"Google",
+	"Apple",
+	"Andriod",
+    ]
+
+    var inGame = false;
+    var timer = 30
+
     function next_word(){
-        var lastWord = document.getElementById("word").innerText;
-        window.location.replace("/Catch_Phrase?lastWord=" + lastWord);
+
+        if (!inGame && timer==30){
+            //Start the Game!
+            inGame = true;
+            var lastWord = document.getElementById("word").innerText;
+            var nextWord = w[Math.floor(Math.random() * w.length)];
+            while( lastWord == nextWord) {
+                nextWord = w[Math.floor(Math.random() * w.length)];
+            }
+            document.getElementById("word").innerText = nextWord;
+        } else if (!inGame && timer == 0) {
+            //Reset game for next round!
+            timer = 30;
+            document.getElementById("timer").innerText = "Timer: " + timer + " Seconds";
+            document.getElementById("word").innerText = "Click here to Start the next round.";
+        } else {
+            //We're in the game, so get the next word
+            var lastWord = document.getElementById("word").innerText;
+            var nextWord = w[Math.floor(Math.random() * w.length)];
+            while( lastWord == nextWord) {
+                nextWord = w[Math.floor(Math.random() * w.length)];
+            }
+            document.getElementById("word").innerText = nextWord;
+        }
     }
+
+    setInterval(function() {
+                //Maybe Play a sound here? Really make them know the Pressure is on!
+                if(inGame){
+                    timer--;
+                    document.getElementById("timer").innerText = "Timer: " + timer + " Seconds left!";
+                    if (timer <= 0){
+                        //Stop the Game and Display Message on Keeping score.
+                        inGame = false;
+                        document.getElementById("word").innerText = "The Round is over. Tap to continue.";
+                    }
+                }
+            }, 1000);
 </script>
 
 {{end}}
