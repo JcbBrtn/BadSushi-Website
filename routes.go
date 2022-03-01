@@ -15,6 +15,8 @@ func routes(app *config.AppConfig) http.Handler {
 
 	//Use Middleware
 	mux.Use(middleware.Recoverer)
+	mux.Use(SessionLoad)
+	mux.Use(NoSurf)
 
 	//Set the Endpoints
 	mux.Get("/", handlers.Repo.Home)
@@ -23,6 +25,7 @@ func routes(app *config.AppConfig) http.Handler {
 	mux.Get("/blog", handlers.Repo.Log)
 	mux.Get("/fractal_render", handlers.Repo.Fractal_Render)
 	mux.Get("/Catch_Phrase", handlers.Repo.Catch_Phrase)
+	mux.Get("/lab", handlers.Repo.Lab)
 
 	//create a seperate page for each blog.
 	for i := 0; i < app.NumberOfBlogs; i++ {
