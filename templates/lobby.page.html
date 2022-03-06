@@ -1,0 +1,36 @@
+{{template "base" .}}
+
+{{define "content"}}
+<div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">Lobby Finder</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">Here is where you can either create a lobby for your friends to join, or go ahead and join a lobby one of your friends have already made.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <input type="text" id="LobbyNum" class="btn btn-outline-secondary btn-lg px-4"/>
+            <button class="btn btn-outline-secondary btn-lg px-4" onclick="join_lobby()">Join</a>
+            <button class="btn btn-outline-secondary btn-lg px-4" onclick="create_lobby()">Create</a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    Oh hi there.
+</div>
+<script>
+    function join_lobby(){
+        var ln = document.getElementById("LobbyNum").value;
+        
+        if (ln.length == 4) {
+            //Preliminary Check, don't let any hax's or just be nice when Krista types in the lobby wrong.
+            //From here, if its only 4 chars long, redirect to the lobby's.
+            window.location.href = "/sc?LobbyId=" + ln;
+
+        } else {
+            alert("Incorrect Lobby Id, please double check that it is correct.")
+        }
+    }
+
+    function create_lobby() {
+        alert("creating new lobby")
+    }
+</script>
+{{end}}
