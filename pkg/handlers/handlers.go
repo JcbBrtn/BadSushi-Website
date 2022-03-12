@@ -37,7 +37,6 @@ func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
 
 //A Simple Game of catch phrase where the device gives the words.
 func (m *Repository) Catch_Phrase(w http.ResponseWriter, r *http.Request) {
-
 	render.RenderTemplate(w, "cp.page.html", &models.TemplateData{})
 }
 
@@ -50,4 +49,8 @@ func (m *Repository) Lab(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "lab.page.html", &models.TemplateData{
 		StringMap: stringMap,
 	})
+}
+
+func (m *Repository) Todo_List(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "todolist.page.html", &models.TemplateData{})
 }

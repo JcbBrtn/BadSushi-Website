@@ -1,0 +1,37 @@
+{{template "base" .}}
+
+{{define "content"}}
+<div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">Todo List</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">A Quick Todo List that you can make on the run.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a class="btn btn-outline-secondary btn-lg px-4" href="/lab">The Lab</a>
+            <a class="btn btn-outline-secondary btn-lg px-4" href="/Catch_Phrase">Catch Phrase</a>
+            <a class="btn btn-outline-secondary btn-lg px-4" href="/fractal">Fractals</a>
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="container mt-5">
+    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
+        <div class="d-grid gap-2 d-sm-flex">
+            <p class="btn btn-outline-primary btn-lg px-4" onclick="">Add Item</p>
+            <p class="btn btn-outline-secondary btn-lg px-4" onclick="">Fractals</p>
+        </div>
+        <hr/>
+        <div id="lists" class="list-group list-group-flush border-bottom scrollarea">
+            <div class="list-group-item list-group-item-action py-3 lh-tight">
+                <div class="d-flex w-100 align-items-center justify-content-between">
+                    <input tpye="text" class="mb-1 text-strong" style="border: none;" placeholder="Click here to edit title."></input>
+                    <small class="text-muted" onclick="Remove_Item()">Remove Item</small>
+                </div>
+                <input type="text" class="col-10 mb-1 small" style="border:none;" placeholder="Click here to edit description."></input>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+</script>
+{{end}}
