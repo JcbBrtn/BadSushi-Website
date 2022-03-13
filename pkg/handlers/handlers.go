@@ -79,7 +79,7 @@ func (m *Repository) Tell_Me_Im_Right(w http.ResponseWriter, r *http.Request) {
 
 	stringMap["statement"] = valids[rand.Intn(len(valids))]
 
-	render.RenderTemplate(w, "lab.page.html", &models.TemplateData{
+	render.RenderTemplate(w, "tmir.page.html", &models.TemplateData{
 		StringMap: stringMap,
 	})
 }
