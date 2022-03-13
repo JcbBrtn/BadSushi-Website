@@ -28,6 +28,7 @@ func routes(app *config.AppConfig) http.Handler {
 	mux.Get("/lab", handlers.Repo.Lab)
 	mux.Get("/lobby", handlers.Repo.SecretMissionLobby)
 	mux.Get("/todo", handlers.Repo.Todo_List)
+	mux.Get("/tell_me_im_right", handlers.Repo.Tell_Me_Im_Right)
 
 	//create a seperate page for each blog.
 	for i := 0; i < app.NumberOfBlogs; i++ {
